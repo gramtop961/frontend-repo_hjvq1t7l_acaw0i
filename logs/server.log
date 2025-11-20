@@ -3,9 +3,8 @@
 > vite
 
 
-  VITE v5.4.20  ready in 236 ms
+  VITE v5.4.20  ready in 288 ms
 
   ➜  Local:   http://localhost:3000/
-  ➜  Network: http://172.20.28.218:3000/
-2:17:21 PM [vite] ✨ new dependencies optimized: @splinetool/react-spline, framer-motion, lucide-react
-2:17:21 PM [vite] ✨ optimized dependencies changed. reloading
+  ➜  Network: http://172.20.0.29:3000/
+9:19:59 PM [vite] Pre-transform error: Failed to load url /node_modules/vite/dist/client/env.mjs (resolved id: /home/workspace/node_modules/vite/dist/client/env.mjs) in /home/workspace/node_modules/vite/dist/client/client.mjs. Does the file exist?

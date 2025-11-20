@@ -1,18 +1,34 @@
-import React from 'react'
-import Spline from '@splinetool/react-spline'
+import React, { Suspense, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
+const LazySpline = React.lazy(() => import('@splinetool/react-spline'))
+
 const Hero = () => {
+  const [isClient, setIsClient] = useState(false)
   const scrollToJourney = () => {
     const el = document.getElementById('journey')
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
+  useEffect(() => {
+    // Ensure we only attempt to render Spline on the client
+    setIsClient(true)
+  }, [])
+
   return (
     <section className="relative min-h-[90vh] w-full overflow-hidden">
-      {/* Spline full-cover background */}
-      <div className="absolute inset-0">
-        <Spline scene="https://prod.spline.design/Jd4wcqFfe70N-TXP/scene.splinecode" style={{ width: '100%', height: '100%' }} />
+      {/* Background layer */}
+      <div className="absolute inset-0" aria-hidden>
+        {/* Safe fallback background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-indigo-900 via-slate-900 to-fuchsia-900" />
+        {/* Spline (lazy, client-only, non-interactive) */}
+        {isClient && (
+          <Suspense fallback={null}>
+            <div className="absolute inset-0 pointer-events-none">
+              <LazySpline scene="https://prod.spline.design/Jd4wcqFfe70N-TXP/scene.splinecode" style={{ width: '100%', height: '100%', pointerEvents: 'none' }} />
+            </div>
+          </Suspense>
+        )}
       </div>
 
       {/* Gradient and vignette overlays (non-blocking) */}

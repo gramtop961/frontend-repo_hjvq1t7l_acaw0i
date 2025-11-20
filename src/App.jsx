@@ -2,6 +2,7 @@ import React from 'react'
 import Hero from './components/Hero'
 import Journey from './components/Journey'
 import Scenes from './components/Scenes'
+import Demo from './components/Demo'
 import FinalCall from './components/FinalCall'
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <Hero />
       <Journey />
       <Scenes />
+      <Demo />
       <FinalCall />
     </div>
   )
